@@ -1,0 +1,31 @@
+from cuenta import cuentas_bancaria
+
+class cuenta_corriente (cuentas_bancaria):
+
+    def _init_(self, numero= None, nombrepropietario= None, saldo:float= 0, tiene_cheque=bool):
+        self._tiene_cheque= tiene_cheque
+        super(cuenta_corriente, self)._init_(numero=numero, nombrepropietario=nombrepropietario, saldo=saldo)
+
+    @property
+    def tiene_cheque(self):
+        return self._tiene_cheque
+
+    @tiene_cheque.setter
+    def tiene_cheque(self, tiene_cheque):
+        self._tiene_cheque = tiene_cheque
+        return self._saldo
+
+    def pagar_cheque(self):
+        self._saldo = self._saldo + ((float (self._saldo) - int (self._pagar_cheque)))
+        return self._saldo
+
+if __name__=='_main_':
+    cuenta_corriente = cuenta_corriente('09248215912', 'martha', '380', bool)
+
+    cuenta_corriente.mostrar_saldo()
+    cuenta_corriente.credito(2800)
+
+    cuenta_corriente.mostrar_saldo()
+    cuenta_corrientes.debito(190)
+
+    print(Cuenta_corriente)
